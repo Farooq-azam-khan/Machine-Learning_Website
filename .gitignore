@@ -1,1 +1,6 @@
-"__pycare__" 
+__pycare__
+Include/
+Lib/
+Scripts/
+pip-selfcheck.json
+tcl/
