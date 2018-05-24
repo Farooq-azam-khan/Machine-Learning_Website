@@ -1,0 +1,163 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1> Data: Iris Dataset </h1>
+
+
+
+<h2>Predict Value</h2>
+<div class="card bg-dark text-white col-sm-7">
+   <div class="card-header bg-light text-dark container-fluid">
+      Predict Value Form
+   </div>
+   <div class="card-body">
+<form action="" method="post">
+   <div class="form-row align-items-center">
+   {{ form.hidden_tag() }}
+   <fieldset class="form-group">
+
+      <div class="form-group row">
+         <label for="pedal_len"> {{ form.pedal_length.label }} </label>
+         {% if form.pedal_length.errors %}
+         <div class="col-sm-8">
+            {{ form.pedal_length(class="form-control form-control-lg is-invalid") }}
+         </div>
+         <div class="invalid-feedback">
+            {% for error in form.pedal_length.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+         </div>
+         {% else %}
+            <div class="col-sm-8">
+               {{ form.pedal_length(class="form-control form-control-lg", size=32, placeholder="Enter pedal length") }}
+            </div>
+         {% endif %}
+      </div>
+      <div class="form-group row">
+         <label for="pedal_len"> {{ form.pedal_width.label }} </label>
+
+         {% if form.pedal_width.errors %}
+            <div class="col-sm-8">
+               {{ form.pedal_width(class="form-control form-control-lg is-invalid") }}
+            </div>
+            <div class="invalid-feedback">
+               {% for error in form.pedal_width.errors %}
+                  <span>{{ error }}</span>
+               {% endfor %}
+            </div>
+         {% else %}
+            <div class="col-sm-8">
+               {{ form.pedal_width(class="form-control form-control-lg", size=32, placeholder="Enter pedal width") }}
+            </div>
+         {% endif %}
+      </div>
+      <div class="form-group row">
+         <label for="pedal_len"> {{ form.sepal_length.label }} </label>
+         {% if form.sepal_length.errors %}
+            <div class="col-sm-8">
+               {{ form.sepal_length(class="form-control form-control-lg is-invalid") }}
+            </div>
+            <div class="invalid-feedback">
+               {% for error in form.sepal_length.errors %}
+                  <span>{{ error }}</span>
+               {% endfor %}
+            </div>
+         {% else %}
+            <div class="col-sm-8">
+               {{ form.sepal_length(class="form-control form-control-lg", size=32, placeholder="Enter sepal length") }}
+            </div>
+         {% endif %}
+      </div>
+      <div class="form-group row">
+         <label for="pedal_len"> {{ form.sepal_width.label }} </label>
+         {% if form.sepal_width.errors %}
+            <div class="col-sm-8">
+               {{ form.sepal_width(class="form-control form-control-lg is-invalid") }}
+            </div>
+            <div class="invalid-feedback">
+               {% for error in form.sepal_width.errors %}
+                  <span>{{ error }}</span>
+               {% endfor %}
+            </div>
+         {% else %}
+            <div class="col-sm-8">
+               {{ form.sepal_width(class="form-control form-control-lg", size=32, placeholder="Enter sepal width") }}
+            </div>
+         {% endif %}
+      </div>
+      </fieldset>
+      <div class="form-group row">
+                   {{ form.submit(class="btn btn-outline-light") }}
+      </div>
+   </div>
+   <!-- <p>
+      {{ form.submit() }}
+   </p> -->
+</form>
+</div>
+</div>
+
+
+<div class="col">
+<p>
+   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#data_graph" aria-expanded="false" aria-controls="collapseExample">
+    iris data graph
+  </button>
+</p>
+<div class="collapse" id="data_graph">
+  <div class="card card-body">
+     To look at the data got here <a href={{ url_for('iris_data') }}>data</a>.
+     {% if measurements_graph %}
+    {{ measurements_graph.render()|safe }}
+    {% endif %}
+  </div>
+</div>
+
+<p>
+   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#ml_models" aria-expanded="false" aria-controls="collapseExample">
+    top ml models graph
+  </button>
+</p>
+<div class="collapse" id="ml_models">
+  <div class="card card-body">
+     KNN classifier score {{ scores }}.
+     {% if barchart %}
+     {{ barchart.render()|safe }}
+     {% endif %}
+  </div>
+</div>
+</div>
+<h2>TODO: list</h2>
+<ul>
+   <li>
+      properties user enters (by the end you will be able to):
+   </li>
+   <ul>
+      <li>
+         train model:
+         - train_test_split/cross_validation
+      </li>
+      <li>
+         give feataures so that you can get a prediction
+      </li>
+      <li>
+         choose any model you wish for a prediction
+      </li>
+   </ul>
+   <li>
+      provided:
+   </li>
+   <ul>
+      <li>
+         - classification of label
+      </li>
+      <li>
+         - model with top performances
+      </li>
+      <li>
+         - get cool graphs displayed
+      </li>
+   </ul>
+
+</ul>
+
+{% endblock content %}

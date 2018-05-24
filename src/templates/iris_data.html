@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1> Data: Iris Dataset </h1>
+<p>
+   Return to iris page <a href={{ url_for('iris') }}> iris data analysis </a>.
+</p>
+<table class="table table-hover table-striped">
+   <caption>
+      Iris data with the feature being pedal length, pedal width, sepla length, sepal width respectively.
+   </caption>
+   <thead class="table-dark">
+      <tr>
+         <th scope="col">Index</th>
+         <th scope="col">Features</th>
+         <th scope="col">Labels</th>
+      </tr>
+   </thead>
+   <tbody>
+      {% for indx in range(length) %}
+         <tr>
+         <th scope="row">{{ indx }}</th>
+         <td>{{ features[indx] }}</td>
+         <td>{{ labels[indx] }}</td>
+       </tr>
+      {% endfor %}
+   </tbody>
+</table>
+{% endblock content %}
